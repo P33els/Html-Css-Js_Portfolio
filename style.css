@@ -53,6 +53,10 @@ body.dark-mode {
     transition: transform 0.1s ease, background-color 0.3s ease;
 }
 
+.gc {
+    margin-top: 5rem;
+}
+
 .custom-cursor.hover,
 .custom-cursor.input-hover {
     background-color: var(--dark-text);
@@ -316,7 +320,7 @@ nav {
 .hero-text h2 {
     font-size: 24px;
     font-weight: 500;
-    color: var(--text-color);
+    color: var (--text-color);
     margin-bottom: 20px;
     display: flex;
     align-items: center;
@@ -384,6 +388,18 @@ nav {
     border: 10px solid rgba(255, 255, 255, 0.2);
     box-shadow: var(--box-shadow);
     animation: float 6s ease-in-out infinite;
+}
+
+.hero-image .image-container {
+    width: 300px; /* Reduce size for better fit */
+    height: 300px;
+}
+
+@media (max-width: 768px) {
+    .hero-image .image-container {
+        width: 200px; /* Further reduce size for smaller screens */
+        height: 200px;
+    }
 }
 
 .placeholder-image {
@@ -463,28 +479,28 @@ nav {
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
-    flex-wrap: wrap;
     gap: 10px;
 }
 
 .filter-btn {
     padding: 8px 20px;
     background-color: var(--white);
-    border: none;
+    border: 2px solid var(--secondary-color);
     border-radius: 50px;
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
     transition: var(--transition);
-    color: var(--text-color);
+    color: var(--secondary-color);
 }
 
-.filter-btn.active,
-.filter-btn:hover {
+.filter-btn.active {
     background-color: var(--secondary-color);
-    color: var (--dark-text);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px #fd826c49;
+    color: var(--white);
+}
+
+.hidden {
+    display: none;
 }
 
 .projects-grid {
@@ -503,6 +519,10 @@ nav {
     transform: translateY(50px);
     opacity: 0;
     animation: projectReveal 0.5s forwards;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 @keyframes projectReveal {
@@ -546,7 +566,7 @@ nav {
     font-size: 18px;
     font-weight: 600;
     color: var(--dark-text);
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .project-info p {
@@ -557,7 +577,7 @@ nav {
 
 .project-links {
     display: flex;
-    gap: 15px;
+    gap: 10px;
 }
 
 .project-link {
@@ -874,7 +894,7 @@ social-links a:hover {
     }
 
     .hero-content {
-        flex-direction: column;
+        flex-direction: column-reverse; /* Move profile picture above the text */
         text-align: center;
     }
 
@@ -883,7 +903,7 @@ social-links a:hover {
     }
 
     .hero-image {
-        margin-top: 30px;
+        margin-bottom: 20px; /* Add spacing below the profile picture */
     }
 
     .about-content {

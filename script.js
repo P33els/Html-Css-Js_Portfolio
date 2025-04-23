@@ -253,38 +253,61 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Remove theme toggle functionality
-    // const themeToggle = document.querySelector('.theme-toggle');
-    // const themeIcon = themeToggle.querySelector('i');
-    // const body = document.body;
 
-    // function toggleTheme() {
-    //     body.classList.toggle('dark-mode');
-    //     if (body.classList.contains('dark-mode')) {
-    //         localStorage.setItem('theme', 'dark');
-    //         themeIcon.classList.remove('fa-moon');
-    //         themeIcon.classList.add('fa-sun');
-    //     } else {
-    //         localStorage.setItem('theme', 'light');
-    //         themeIcon.classList.remove('fa-sun');
-    //         themeIcon.classList.add('fa-moon');
-    //     }
-    // }
+    // Fetch and display GitHub repositories
+    const githubUsername = "P33els"; // Replace with your GitHub username
+    const githubProjectsContainer = document.getElementById('github-projects');
 
-    // const savedTheme = localStorage.getItem('theme');
-    // if (savedTheme === 'dark') {
-    //     body.classList.add('dark-mode');
-    //     themeIcon.classList.remove('fa-moon');
-    //     themeIcon.classList.add('fa-sun');
-    // } else {
-    //     body.classList.remove('dark-mode');
-    //     themeIcon.classList.remove('fa-sun');
-    //     themeIcon.classList.add('fa-moon');
-    // }
+    async function fetchGitHubRepos() {
+        try {
+            const response = await fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated`);
+            const repos = await response.json();
 
-    // if (themeToggle) {
-    //     themeToggle.addEventListener('click', toggleTheme);
-    // }
+            repos.forEach(repo => {
+                const repoCard = document.createElement('div');
+                repoCard.classList.add('project-card');
+                repoCard.innerHTML = `
+                    <div class="project-info">
+                        <h3>${repo.name}</h3>
+                        <p>${repo.description || "No description available."}</p>
+                        <div class="project-links">
+                            <a href="${repo.html_url}" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> View Repository
+                            </a>
+                        </div>
+                    </div>
+                `;
+                githubProjectsContainer.appendChild(repoCard);
+            });
+        } catch (error) {
+            console.error("Error fetching GitHub repositories:", error);
+            githubProjectsContainer.innerHTML = `<p style="text-align: center; color: var(--text-color);">Unable to load projects.</p>`;
+        }
+    }
+
+    fetchGitHubRepos();
+
+    // Toggle project categories
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectSections = document.querySelectorAll('.projects-grid');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            // Show/hide project sections based on filter
+            const filter = button.getAttribute('data-filter');
+            projectSections.forEach(section => {
+                if (section.getAttribute('data-category') === filter) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+        });
+    });
 });
 
 // Current date and time display
