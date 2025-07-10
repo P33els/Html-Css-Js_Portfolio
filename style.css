@@ -440,6 +440,14 @@ nav {
         margin: 0 auto;
         margin-bottom: 20px;
     }
+
+}
+
+@media (max-width: 433px) {
+    .skills-logo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 5px;
+    }
 }
 
 .placeholder-image {
@@ -1169,6 +1177,11 @@ nav {
     .custom-cursor {
         display: none;
         /* Hide the custom cursor */
+    }
+
+    .skills-logo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 14px;
     }
 }
 
