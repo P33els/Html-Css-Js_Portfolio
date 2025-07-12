@@ -2,15 +2,16 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pfolio</title>
-    <link rel="icon" href="favicon.png" type="image/png">
-    <link rel="image_src" href="thumnail.png" type="image/png">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <meta charset = "UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Pfolio</title>
+            <link rel="icon" href="favicon.png" type="image/png">
+            <link rel="image_src" href="thumnail.png" type="image/png">
+            <link rel="stylesheet" href="style.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+                rel="stylesheet">
+            <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -38,7 +39,7 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
+                <div class="hero-text" data-aos="fade-right" data-aos-duration="1000">
                     <h1>Hello, I'm <span class="highlight">Peeranat</span></h1>
                     <h2>I'm a &nbsp;<span class="typed-text"></span><span class="cursor">&nbsp;</span></h2>
                     <p>Welcome to my minimal portfolio website showcasing my work and skills.</p>
@@ -47,7 +48,7 @@
                         <a href="#contact" class="btn secondary" style="cursor: none;">Contact Me</a>
                     </div>
                 </div>
-                <div class="hero-image">
+                <div class="hero-image" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                     <div class="image-container">
                         <div class="placeholder-image"> <img src="pro.jpg" alt="Profile Picture" class="profile-pic">
                         </div>
@@ -88,13 +89,13 @@
 
     <section id="projects" class="projects">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" data-aos="fade-up">
                 <h2>Github Projects</h2>
                 <div class="underline"></div>
             </div>
 
-            <div id="github-projects" class="projects-grid" data-category="github">
-                <!-- GitHub repositories will be dynamically loaded here -->
+            <div id="github-projects" class="projects-grid" data-category="github" data-aos="fade-up"
+                data-aos-delay="200">
             </div>
 
 
@@ -134,7 +135,7 @@
 
     <section id="skills" class="skills">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" data-aos="fade-up">
                 <h2>My Skills</h2>
                 <div class="underline"></div>
             </div>
@@ -155,8 +156,8 @@
                             <span>JS</span>
                         </div>
                         <div class="skill-logo-item">
-                            <img src="https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-icon.svg" alt="TypeScript"
-                                style="width:32px;height:32px;margin-bottom:6px;">
+                            <img src="https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-icon.svg"
+                                alt="TypeScript" style="width:32px;height:32px;margin-bottom:6px;">
                             <span>TypeScript</span>
                         </div>
                         <div class="skill-logo-item">
@@ -245,8 +246,8 @@
                             <span>MongoDB</span>
                         </div>
                         <div class="skill-logo-item">
-                            <img src="https://img.icons8.com/?size=100&id=zJh5Gyrd6ZKu&format=png&color=000000" alt="Prisma ORM"
-                                style="width:32px;height:32px;margin-bottom:6px;">
+                            <img src="https://img.icons8.com/?size=100&id=zJh5Gyrd6ZKu&format=png&color=000000"
+                                alt="Prisma ORM" style="width:32px;height:32px;margin-bottom:6px;">
                             <span>Prisma ORM</span>
                         </div>
                     </div>
@@ -283,12 +284,12 @@
 
     <section id="contact" class="contact">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" data-aos="fade-up">
                 <h2>Get In Touch</h2>
                 <div class="underline"></div>
             </div>
             <div class="contact-content">
-                <div class="contact-info">
+                <div class="contact-info" data-aos="fade-right">
                     <div class="contact-item">
                         <div class="icon">
                             <i class="fas fa-envelope"></i>
@@ -318,6 +319,27 @@
                         </a>
                     </div>
                 </div>
+                <div class="contact-form" data-aos="fade-left">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" name="from_name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="from_email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn primary submit-btn">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-loading">Sending...</span>
+                        </button>
+                    </form>
+                    <div id="form-message" class="form-message"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -331,6 +353,14 @@
     <div class="scroll-up">
         <i class="fas fa-arrow-up"></i>
     </div>
+
+    <!-- JavaScript Libraries -->
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Typed.js for typing animation -->
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <!-- EmailJS for contact form -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <script src="script.js"></script>
 </body>
